@@ -7,6 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        'dark-bg': '#202123',
         gray: {
           100: "#eeeeef",
           200: "#e6e9ed",
