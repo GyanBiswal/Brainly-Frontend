@@ -6,9 +6,12 @@ import CreateContentModel from '../components/CreateContentModel';
 import PlusIcon from '../icons/plusIcon';
 import ShareIcon from '../icons/ShareIcon';
 import Sidebar from '../components/Sidebar';
+import useContent from '../Hooks/useContent';
 
 function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const contents = useContent();
 
   return (
     <div className="flex bg-[#2A2D32]">
@@ -34,8 +37,11 @@ function Dashboard() {
         </div>
 
         <div className="flex gap-4">
-          <Card title="first tweet" type="twitter" link="https://x.com/normie_gautam/status/1914770895316619676" />
-          <Card title="first youtube" type="youtube" link="https://www.youtube.com/watch?v=1iJ34tTjwwo" />
+          <div className='flex gap-4'>
+            {contents.map(({type, link, title}) =>  <Card title={title} type={type} link={link} />)}
+          </div>
+          {/* <Card title="first tweet" type="twitter" link="https://x.com/normie_gautam/status/1914770895316619676" />
+          <Card title="first youtube" type="youtube" link="https://www.youtube.com/watch?v=1iJ34tTjwwo" /> */}
         </div>
       </div>
     </div>
